@@ -358,7 +358,7 @@
       <p class="tagline">A Centralized, EVM-Compatible Blockchain Network</p>
       <p class="description">
         Patrie Network is a high-performance blockchain built from the ground up as a
-        <strong>centralized network</strong> — intentional by design — while remaining fully
+        <strong>Centralized Network</strong> — intentional by design — while remaining fully
         compatible with the Ethereum Virtual Machine. We're putting the finishing touches on
         something remarkable. Stay tuned.
       </p>
@@ -385,7 +385,7 @@
       <p>Be the first to know when Patrie Network launches.</p>
       <fieldset style="border:none;padding:0;margin:0">
         <legend class="sr-only">Email subscription form</legend>
-        <div class="form-row" role="group" aria-describedby="form-error">
+        <form class="form-row" id="subscribe-form" onsubmit="handleSubmit(event)" novalidate>
           <label for="email-input" class="sr-only">Email address</label>
           <input
             type="email"
@@ -395,8 +395,8 @@
             aria-required="true"
             aria-describedby="form-error"
           />
-          <button type="button" class="btn-subscribe" onclick="handleSubmit()">Notify Me</button>
-        </div>
+          <button type="submit" class="btn-subscribe">Notify Me</button>
+        </form>
         <p id="form-error" class="form-error" role="alert" aria-live="polite" aria-atomic="true"></p>
       </fieldset>
       <p class="form-note">No spam, ever. Unsubscribe anytime.</p>
@@ -409,10 +409,11 @@
   </footer>
 
   <script>
-    function handleSubmit() {
-      var input = document.getElementById('email-input');
-      var btn   = document.querySelector('.btn-subscribe');
-      var error = document.getElementById('form-error');
+    function handleSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('email-input');
+      const btn   = document.querySelector('.btn-subscribe');
+      const error = document.getElementById('form-error');
 
       if (!input.value.trim() || !input.validity.valid) {
         error.textContent = 'Please enter a valid email address.';
