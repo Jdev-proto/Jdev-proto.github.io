@@ -286,12 +286,6 @@
       color: #4a5568;
     }
 
-    .form-error {
-      min-height: 1.2em;
-      font-size: .8rem;
-      margin-top: .4rem;
-    }
-
     .sr-only {
       position: absolute;
       width: 1px;
@@ -385,19 +379,18 @@
       <p>Be the first to know when Patrie Network launches.</p>
       <fieldset style="border:none;padding:0;margin:0">
         <legend class="sr-only">Email subscription form</legend>
-        <form class="form-row" id="subscribe-form" onsubmit="handleSubmit(event)" novalidate>
+        <form class="form-row" action="https://formspree.io/f/mlgoaedv" method="POST">
           <label for="email-input" class="sr-only">Email address</label>
           <input
             type="email"
+            name="email"
             placeholder="your@email.com"
             required
             id="email-input"
             aria-required="true"
-            aria-describedby="form-error"
           />
           <button type="submit" class="btn-subscribe">Notify Me</button>
         </form>
-        <p id="form-error" class="form-error" role="alert" aria-live="polite" aria-atomic="true"></p>
       </fieldset>
       <p class="form-note">No spam, ever. Unsubscribe anytime.</p>
     </section>
@@ -408,29 +401,6 @@
     <p>© 2026 <a href="https://patrienetwork.com">Patrie Network</a>. All rights reserved.</p>
   </footer>
 
-  <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      const input = document.getElementById('email-input');
-      const btn   = document.querySelector('.btn-subscribe');
-      const error = document.getElementById('form-error');
-
-      if (!input.value.trim() || !input.validity.valid) {
-        error.textContent = 'Please enter a valid email address.';
-        error.style.color = '#ff6b6b';
-        input.setAttribute('aria-invalid', 'true');
-        input.focus();
-        return;
-      }
-
-      error.textContent = '';
-      input.removeAttribute('aria-invalid');
-      btn.textContent = '✓ You\'re on the list!';
-      btn.style.background = 'linear-gradient(135deg,#00c97a 0%,#00b36e 100%)';
-      btn.disabled = true;
-      input.disabled = true;
-    }
-  </script>
 
 </body>
 </html>
